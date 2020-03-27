@@ -1,0 +1,127 @@
+/*****************************************************************************************************************************************************************************
+*Class Name: Jugador
+* Author/s name: Eduardo Mora Gonzalez y Lucia Rosa Alonso
+* Release/Creation date: 2/11/2016
+* Class version: 1.0 
+* Class description:Clase creada para definir a un Jugador, en la cual se le asigna un DNI, y se puede comparar este DNI
+* con el otro jugador. Además de los metodos para cambiar, obtener y mostrar la información de lo atributos.
+* ******************************************************************************************************************************************************************************
+*/
+package Practica_3;
+
+public class Jugador {
+
+	
+	private int DNI; //atributo que distingue un jugador de otro
+
+	public Jugador() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: Jugador()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método es el constructor, el cual nos proporciona un DNI para el jugador
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método no devuelve ningún valor.
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		DNI = aleatorio(0000000, 9999999); //llamo al metodo aleatorio para que me cree un DNI
+
+	}
+
+	public int aleatorio(int término_inicial, int término_final) {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: aleatorio()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método proporciona un numero aleatorio entre los rangos que les pasamos
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve un valor aleatorio.
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		int numero; //variable auxiliar 
+
+		numero = (int) (Math.random() * (término_final - término_inicial));
+
+		return numero;
+	}
+
+	public int getDNI() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: getDNI()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método nos proporciona el valor del DNI
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve el valor del DNI
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		return DNI;
+	}
+
+	public String toString() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: toString()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método nos escribe el DNI del jugador
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve una frase
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		String mensaje = "El DNI del Jugador es: " + DNI;
+		return mensaje;
+	}
+
+	public boolean Comparar(Jugador j) {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: Comparar()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método nos compara el ultimo digito de dos DNI
+		*
+		* Calling arguments:Jugador
+		* 
+		* Return value: Este método devuelve un booleano diciendo si coincide el ultimo numero o no
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		return (DNI % 10) == (j.getDNI() % 10);
+	}
+}

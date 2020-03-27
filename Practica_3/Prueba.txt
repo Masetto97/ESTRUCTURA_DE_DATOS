@@ -1,0 +1,38 @@
+/*****************************************************************************************************************************************************************************
+* Class Name: Prueba
+* Author/s name: Eduardo Mora Gonzalez y Lucia Rosa Alonso
+* Release/Creation date: 2/11/2016
+* Class version: 1.0 
+* Class description:Clase creada para probar el funcionamiento del programa.
+* ******************************************************************************************************************************************************************************
+*/
+package Practica_3;
+
+public class Prueba {
+
+	
+	public static void main(String []args){
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: main()
+		*
+		* Name of the original author:---------
+		*
+		* Description of the Method: Este método es el main, y lo que hace es ejecutarnos todo el programa.
+		*
+		* Calling arguments: llamo a la clase Buscador
+		*
+		* Return value: Este método no devuelve ningún valor.
+		*
+		* Required Files: Este método no requiere nada.
+		*
+		* List of Checked Exceptions:------
+		********************************************************************************************************************************************************************************************************/
+	
+		
+		Buscador B= new Buscador();
+		B.Buscador_de_Arbitros();
+		
+	}
+	
+}

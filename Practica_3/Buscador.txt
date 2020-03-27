@@ -1,0 +1,120 @@
+/*****************************************************************************************************************************************************************************
+* Class Name: Buscador
+* Author/s name: Eduardo Mora Gonzalez y Lucia Rosa Alonso
+* Release/Creation date: 2/11/2016
+* Class version: 1.0 
+* Class description:Clase creada para crear las dos listas de los jugadores, compararlas y crear otra listas con los arbitros
+* elegidos.
+* ******************************************************************************************************************************************************************************
+*/
+package Practica_3;
+
+import java.util.ArrayList;
+import javax.swing.text.html.HTMLDocument.Iterator;
+
+public class Buscador {
+
+	private int i, contador = 0;//variables usadas para los bucles o contadores
+	private ArrayList<Jugador> Lista_1 = new ArrayList<Jugador>(); //Lista 1 de jugadores 
+	private ArrayList<Jugador> Lista_2 = new ArrayList<Jugador>(); //Lista 2 de jugadores 
+	private ArrayList<Jugador> Arbitros = new ArrayList<Jugador>(); //Lista de arbitros
+
+
+	public void Crear_Lista(ArrayList<Jugador> L) {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: Crear_Lista
+		*
+		* Name of the original author:---------
+		*
+		* Description of the Method: Este método nos crea una lista
+		*
+		* Calling arguments: -------
+		*
+		* Return value: Este método no devuelve ningún valor.
+		*
+		* Required Files: Este método no requiere nada.
+		*
+		* List of Checked Exceptions:------
+		********************************************************************************************************************************************************************************************************/
+	
+		for (i = 1; i <= 20; i++) {
+			L.add(new Jugador());
+		}
+	}
+
+	public void Mostra_Listas(ArrayList<Jugador> L) {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: Mostar_Lista
+		*
+		* Name of the original author:---------
+		*
+		* Description of the Method: Este método nos muestra una lista
+		*
+		* Calling arguments: -------
+		*
+		* Return value: Este método no devuelve ningún valor.
+		*
+		* Required Files: Este método no requiere nada.
+		*
+		* List of Checked Exceptions:------
+		********************************************************************************************************************************************************************************************************/
+	
+		for (i = 0; i < L.size(); i++) {
+			System.out.println(L.get(i).getDNI());
+		}
+	}
+
+	public <T> void Buscador_de_Arbitros() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: Buscador_de_Arbitros()
+		*
+		* Name of the original author:---------
+		*
+		* Description of the Method: Este método nos crea dos listas, luego nos la muestra, las compara para saber si el ultimo digito del DNI de los jugadores de la
+		* listas coincide, si coincide un minimo de 4 jugadores, los mete en la lista de arbitros, en el caso de que no coincida minimo 4 repite todo el proceso.
+		*
+		* Calling arguments: -------
+		*
+		* Return value: Este método no devuelve ningún valor.
+		*
+		* Required Files: Este método no requiere nada.
+		*
+		* List of Checked Exceptions:------
+		********************************************************************************************************************************************************************************************************/
+	
+		 do {
+		Crear_Lista(Lista_1);
+		Crear_Lista(Lista_2);
+		// Impresion de las dos listas
+		System.out.println("Las listas de los jugadores son:");
+		System.out.println("Lista 1: ");
+		Mostra_Listas(Lista_1);
+		System.out.println("Lista 2: ");
+		Mostra_Listas(Lista_2);
+		// Comparador de los ultimos digitos del DNI.
+		i = 0;
+		while (i < Lista_1.size()) {
+			if (Lista_2.get(i).Comparar(Lista_1.get(Lista_1.size() - 1 - i))) {
+
+				contador = contador + 2;
+				Arbitros.add(Lista_2.get(i));
+				Arbitros.add(Lista_1.get(Lista_1.size() - 1 - i));
+			}
+			i++;
+		}
+		if(contador < 4){
+			System.err.println("AL NO TENER MINIMO 4 ARBITROS, SE REPETIRA TODO EL PROCESO");
+			
+		}
+		
+		 } while (contador < 4);
+		// Imprimir Lista de Arbitros con Iterator.
+		System.out.println("Las listas de los Arbitros son:");
+		java.util.Iterator<Jugador> iter = Arbitros.iterator();
+		while (iter.hasNext())
+			System.out.println(iter.next());
+	}
+}
