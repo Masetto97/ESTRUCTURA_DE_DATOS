@@ -1,0 +1,106 @@
+package Practica_2;
+/*****************************************************************************************************************************************************************************
+* Class Name: GestionCola
+* Author/s name: Eduardo Mora Gonzalez y Lucia Rosa Alonso
+* Release/Creation date: 12/11/2016
+* Class version: 1.0 
+* Class description: Clase basada en la creación de cola con prioridad. Primero hemos creado a los pasajeros de llegada, los hemos 
+* metido en la cola de prioridad, y luego los hemos ido sacando de la misma.
+* 
+* ******************************************************************************************************************************************************************************
+*/
+
+import java.util.PriorityQueue;
+import java.util.Queue;
+
+public class GestionCola {
+
+	private Queue<Pasajero> Cola = new PriorityQueue<Pasajero>();	//Cola de prioridad
+	private int i, timer = 0;										//variables usadas para la creacion de los pasajeros
+	private Pasajero aux;											//variable para mostrar los pasajeros
+
+	public GestionCola() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: GestionCola()
+		*
+		* Name of the original author:---------
+		*
+		* Description of the Method: Este método es el constructor de la clase, y ejecuta los dos métodos que vemos a continuación
+		*
+		* Calling arguments: -------
+		*
+		* Return value: Este método no devuelve ningún valor.
+		*
+		* Required Files: Este método no requiere nada.
+		*
+		* List of Checked Exceptions:------
+		********************************************************************************************************************************************************************************************************/
+	
+		crear_mostrar_cola();
+		desencolar(Cola);
+	}
+
+	
+	public void crear_mostrar_cola() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: crear_mostrar_cola()
+		*
+		* Name of the original author:---------
+		*
+		* Description of the Method: Este método se encarga de cargar los pasajeros con su tiempo de llegada, y meterlos dentro de la cola
+		* con prioridad
+		* 
+		* Calling arguments: -------
+		*
+		* Return value: Este método no devuelve ningún valor.
+		*
+		* Required Files: Este método no requiere nada.
+		*
+		* List of Checked Exceptions:------
+		********************************************************************************************************************************************************************************************************/
+		timer=0;
+		aux = new Pasajero(timer);
+		System.out.println(aux);
+		for (i = 0; i < 9; i++) {
+			timer = timer + 15;
+			aux = new Pasajero(timer);
+			System.out.println(aux);
+			Cola.add(aux);
+		}
+
+	}
+	// metodo para desencolar una cola
+
+	public void desencolar(Queue C) {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: desencolar()
+		*
+		* Name of the original author:---------
+		*
+		* Description of the Method: Este método tiene la tarea de ir sacando a los pasajeros de la cola, a la vez que nos los muestra.
+		* 
+		* Calling arguments: Llama a la cola
+		*
+		* Return value: Este método no devuelve ningún valor.
+		*
+		* Required Files: Este método no requiere nada.
+		*
+		* List of Checked Exceptions:------
+		********************************************************************************************************************************************************************************************************/
+	
+		do {
+				System.out.println("El pasajero que se va es: \n");
+				System.out.println(C.peek());
+				C.poll();
+
+		} while (!C.isEmpty());
+		
+		System.out.println("Ya no hay pasajeros, el vuelo ya ha salido. ADIOS. ");
+
+	}
+
+}
+

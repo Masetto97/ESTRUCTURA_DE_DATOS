@@ -1,0 +1,320 @@
+package Practica_2;
+/*****************************************************************************************************************************************************************************
+* Class Name: Pasajero
+* Author/s name: Eduardo Mora Gonzalez y Lucia Rosa Alonso
+* Release/Creation date: 2/11/2016
+* Class version: 1.0 
+* Class description:Clase creada para probar el funcionamiento del programa.
+* ******************************************************************************************************************************************************************************
+*/
+
+import java.util.Random;
+
+public class Pasajero implements Comparable<Pasajero> {
+
+	private int DNI, aux, Hora; //DNI y Hora de llegada del pasajero y una variable auxiliar
+	private boolean discapacitado; //para saber si el pasajero es discapacitado
+	private String clase; //Para saber la clase del pasajero
+
+	public Pasajero(int Hora) {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: Pasajero()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método es el constructor, el cual nos proporciona un DNI, clase, discapacidad del pasajero
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método no devuelve ningún valor.
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+	
+
+		this.Hora = Hora;
+
+		DNI = aleatorio(0000000, 9999999);
+
+		switch (aux = aleatorio(0, 3)) {
+
+		case 0:
+			clase = "Turista";
+			break;
+		case 1:
+			clase = "Premium";
+			break;
+		case 2:
+			clase = "VIP";
+			break;
+		}
+		discapacitado = aleatorio_Boolean();
+
+	}
+
+	public boolean aleatorio_Boolean() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: aleatorio_Boolean()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método proporciona un numero boolean aleatorio
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve un boolean aleatorio.
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		Random r = new Random();
+		return r.nextBoolean();
+	}
+
+	public int aleatorio(int término_inicial, int término_final) {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: aleatorio()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método proporciona un numero aleatorio entre los rangos que les pasamos
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve un valor aleatorio.
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+
+		int numero;
+
+		numero = (int) (Math.random() * (término_final - término_inicial));
+
+		return numero;
+	}
+
+	public int compareTo(Pasajero p) {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: compareTo()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método nos coloca los pasajeros
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método no devuelve nada
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		int r = 0;
+
+		if (p.getDiscapacidad() && !getDiscapacidad()) {
+			r = +1;
+		} else {
+			if (!p.getDiscapacidad() && getDiscapacidad()) {
+				r = -1;
+			} else {
+				if (p.valor_clase(p) > valor_class()) {
+					r = +1;
+				} else {
+					if (p.valor_clase(p) < valor_class()) {
+						r = -1;
+					}
+				}
+			}
+		}
+		return r;
+	}
+
+	public int getDNI() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: getDNI()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método nos proporciona el DNI del pasajero
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve un int
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		
+		
+		return DNI;
+	}
+
+	public int getHora() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: getHora()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método nos proporciona la hora de llegada del pasajero
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve un int
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		
+		return Hora;
+	}
+
+	public String getClase() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: getClase()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método nos proporciona la clase del pasajero
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve un String
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		return clase;
+	}
+
+	public int valor_clase(Pasajero p) {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: valor_clase()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método nos asigna un valor numerico a cada clase del avión de un pasajero externo
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve un int
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+
+		String c = p.getClase();
+
+		switch (c) {
+		case "VIP":
+			return aux = 2;
+		case "Premium":
+			return aux = 1;
+		case "Turista":
+			return aux = 0;
+		}
+		return aux;
+	}
+
+	public int valor_class() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: valor_class()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método nos asigna un valor numerico a cada clase del avión
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve un int
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+
+		String c = getClase();
+
+		switch (c) {
+		case "VIP":
+			return aux = 2;
+		case "Premium":
+			return aux = 1;
+		case "Turista":
+			return aux = 0;
+		}
+		return aux;
+	}
+
+	public boolean getDiscapacidad() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: getDiscapacidad(
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método nos proporciona si el Pasajero es discapacitado o no
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve un boolean
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		return discapacitado;
+	}
+
+	public String toString() {
+		/******************************************************************************************************************************************************************************************************
+		*
+		* Method name: toString()
+		*
+		* Name of the original author:------
+		*
+		* Description of the Method: Este método nos escribe el DNI, clase, discapacidad y hora de llegada del pasajero
+		*
+		* Calling arguments:------
+		* 
+		* Return value: Este método devuelve una frase
+		*
+		* Required Files:---------------- 
+		*
+		* List of Checked Exceptions:----------------------------
+		********************************************************************************************************************************************************************************************************/
+
+		String mensaje = " \n El DNI del pasajero es:  " + DNI + ". Su clase es:  " + clase + ". ¿Discapacitado?  "
+				+ discapacitado + ". Y su hora de llegada a sido:  " + Hora + "\n";
+		return mensaje;
+	}
+
+}
+

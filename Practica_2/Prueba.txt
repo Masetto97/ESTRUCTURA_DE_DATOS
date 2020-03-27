@@ -1,0 +1,21 @@
+package Practica_2;
+/*****************************************************************************************************************************************************************************
+* Class Name: Prueba
+* Author/s name: Eduardo Mora Gonzalez y Lucia Rosa Alonso
+* Release/Creation date: 2/11/2016
+* Class version: 1.0 
+* Class description:Clase creada para probar el funcionamiento del programa.
+* ******************************************************************************************************************************************************************************
+*/
+
+import java.util.LinkedList;
+
+public class Prueba {
+
+    public static void main (String[]args) throws InterruptedException {
+     GestionCola G=new GestionCola();
+     
+    }
+}
+    
+
